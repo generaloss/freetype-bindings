@@ -1,26 +1,28 @@
 import generaloss.freetype.*;
 import jpize.util.res.Resource;
 
+import static generaloss.freetype.FreeType.toInt;
+
 public class Test {
 
     private static final String CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890\"!`?'.,;:()[]{}<>|/@\\^$-%+=#_&~*�?�?�?�?�? ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿À�?ÂÃÄÅÆÇÈÉÊËÌ�?Î�?�?ÑÒÓÔÕÖ×ØÙÚÛÜ�?Þßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ";
 
-    public static int toInt(int value) {
-        return ((value + 63) & -64) >> 6;
+    public static void main(String[] args) {
+        test1();
     }
 
-    public static void main(String[] args) {
+    private static void test1() {
         final FreeType library = FreeType.init();
 
         final FreeTypeFace face = library.newFace(Resource.internal("/droidsans.ttf"), 0);
         face.setPixelSizes(0, 15);
         final FreeTypeSizeMetrics faceMetrics = face.getSize().getMetrics();
-        System.out.println(toInt(faceMetrics.getAscender()) + ", " + toInt(faceMetrics.getDescender()) + ", " + toInt(faceMetrics.getHeight()));
+        System.out.println(faceMetrics.getAscender() + " " + toInt(faceMetrics.getAscender()) + ", " + toInt(faceMetrics.getDescender()) + ", " + toInt(faceMetrics.getHeight()));
 
         for(int i = 0; i < CHARS.length(); i++) {
             if(!face.loadGlyph(face.getCharIndex(CHARS.charAt(i)), 0))
                 continue;
-            if(!face.getGlyph().renderGlyph(FreeType.FT_RENDER_MODE_NORMAL))
+            if(!face.getGlyph().renderGlyph(FTRenderMode.NORMAL))
                 continue;
 
             final FreeTypeBitmap bitmap = face.getGlyph().getBitmap();

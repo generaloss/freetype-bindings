@@ -22,10 +22,10 @@ public class FreeTypeGlyph {
 
     private static native long toBitmap(long glyph, int renderMode);
 
-    public void toBitmap(int renderMode) {
-        final long bitmap = toBitmap(address, renderMode);
+    public void toBitmap(FTRenderMode renderMode) {
+        final long bitmap = toBitmap(address, renderMode.value);
         if(bitmap == 0)
-            throw new RuntimeException("Couldn't render glyph, FreeType error code: " + FreeType.getLastErrorCode());
+            throw new RuntimeException("Couldn't render glyph: " + FreeType.getLastError());
         address = bitmap;
         rendered = true;
     }
@@ -35,7 +35,7 @@ public class FreeTypeGlyph {
 
     public FreeTypeBitmap getBitmap() {
         if(!rendered)
-            throw new RuntimeException("Glyph is not yet rendered");
+            throw new IllegalStateException("Glyph is not rendered yet");
         return new FreeTypeBitmap(getBitmap(address));
     }
 
@@ -44,7 +44,7 @@ public class FreeTypeGlyph {
 
     public int getLeft() {
         if(!rendered)
-            throw new RuntimeException("Glyph is not yet rendered");
+            throw new IllegalStateException("Glyph is not rendered yet");
         return getLeft(address);
     }
 
@@ -53,7 +53,7 @@ public class FreeTypeGlyph {
 
     public int getTop() {
         if(!rendered)
-            throw new RuntimeException("Glyph is not yet rendered");
+            throw new IllegalStateException("Glyph is not rendered yet");
         return getTop(address);
     }
 

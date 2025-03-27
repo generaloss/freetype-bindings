@@ -51,8 +51,8 @@ public class FreeTypeGlyphSlot {
 
     private static native int getFormat(long slot);
 
-    public int getFormat() {
-        return getFormat(address);
+    public FTGlyphFormat getFormat() {
+        return FTGlyphFormat.byValue(getFormat(address));
     }
 
 
@@ -80,8 +80,8 @@ public class FreeTypeGlyphSlot {
 
     private static native boolean renderGlyph(long slot, int renderMode);
 
-    public boolean renderGlyph(int renderMode) {
-        return renderGlyph(address, renderMode);
+    public boolean renderGlyph(FTRenderMode renderMode) {
+        return renderGlyph(address, renderMode.value);
     }
 
 
@@ -90,7 +90,7 @@ public class FreeTypeGlyphSlot {
     public FreeTypeGlyph getGlyph() {
         final long glyph = getGlyph(address);
         if(glyph == 0)
-            throw new RuntimeException("Couldn't get glyph, FreeType error code: " + FreeType.getLastErrorCode());
+            throw new RuntimeException("Couldn't get glyph: " + FreeType.getLastError());
         return new FreeTypeGlyph(glyph);
     }
 

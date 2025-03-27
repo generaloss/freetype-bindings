@@ -15,15 +15,17 @@ public class FreeTypeFace {
 
     private static native int getFaceFlags(long face);
 
-    public int getFaceFlags() {
-        return getFaceFlags(address);
+    public FTFaceFlags getFaceFlags() {
+        final int flags = getFaceFlags(address);
+        return new FTFaceFlags(flags);
     }
 
 
     private static native int getStyleFlags(long face);
 
-    public int getStyleFlags() {
-        return getStyleFlags(address);
+    public FTStyleFlags getStyleFlags() {
+        final int flags = getStyleFlags(address);
+        return new FTStyleFlags(flags);
     }
 
 
