@@ -1,4 +1,4 @@
-#include "generaloss_freetype_FreeTypeSizeMetrics.h"
+#include "FreeTypeSizeMetrics.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 

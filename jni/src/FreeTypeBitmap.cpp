@@ -1,4 +1,4 @@
-#include "generaloss_freetype_FreeTypeBitmap.h"
+#include "FreeTypeBitmap.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 

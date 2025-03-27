@@ -1,4 +1,4 @@
-#include "generaloss_freetype_FreeType.h"
+#include "FreeType.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_STROKER_H

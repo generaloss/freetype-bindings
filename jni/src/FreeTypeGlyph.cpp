@@ -1,4 +1,4 @@
-#include "generaloss_freetype_FreeTypeGlyph.h"
+#include "FreeTypeGlyph.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 #include FT_GLYPH_H

@@ -5,13 +5,16 @@ project(freetype_bindings)
 set(TARGET_OS "windows")
 
 # jdk headers
-set(JAVA_HOME "/usr/lib/jvm/java-17-openjdk")
-include_directories("${JAVA_HOME}/include")
-
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(JAVA_HOME "/usr/lib/jvm/java-17-openjdk")
     include_directories("${JAVA_HOME}/include/linux")
+    include_directories("${JAVA_HOME}/include")
+
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    include_directories("${JAVA_HOME}/include/win32")
+    set(JAVA_HOME "your windows java home path")
+    include_directories("${JAVA_HOME}\\include\\win32")
+    include_directories("${JAVA_HOME}\\include")
+
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Android")
     # android-specific include paths can be added here if needed
 endif()
@@ -33,27 +36,8 @@ if(TARGET_OS STREQUAL "linux")
 
 elseif(TARGET_OS STREQUAL "windows")
     message(STATUS "Compiling for Windows")
-
     # ensure cmake generates a dll
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-
-    if(MINGW)
-        message(STATUS "Building with mingw-w64")
-        # setup toolchain-mingw64.cmake
-        set(CMAKE_SYSTEM_NAME Windows)
-        set(CMAKE_SYSTEM_PROCESSOR x86_64)
-        # specify the cross compiler
-        set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
-        set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
-        set(CMAKE_RC_COMPILER x86_64-w64-mingw32-windres)
-        # where is the target environment
-        set(CMAKE_FIND_ROOT_PATH /usr/x86_64-w64-mingw32)
-        # search for programs in the build host directories
-        set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
-        # for libraries and headers in the target directories
-        set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
-        set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-    endif()
 
 elseif(TARGET_OS STREQUAL "android")
     message(STATUS "Compiling for Android")

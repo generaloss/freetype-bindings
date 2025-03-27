@@ -1,4 +1,4 @@
-#include "generaloss_freetype_FreeTypeGlyphMetrics.h"
+#include "FreeTypeGlyphMetrics.h"
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
