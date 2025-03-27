@@ -54,8 +54,8 @@ public class FreeTypeBitmap {
 
     private static native int getPixelMode(long bitmap);
 
-    public int getPixelMode() {
-        return getPixelMode(address);
+    public FTPixelMode getPixelMode() {
+        return FTPixelMode.byValue(getPixelMode(address));
     }
 
 }
