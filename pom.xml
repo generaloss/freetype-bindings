@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.generaloss</groupId>
+    <artifactId>freetype-bindings</artifactId>
+    <version>24.3.1-SNAPSHOT-1</version>
+    <name>freetype-bindings</name>
+
+    <description>Java Crossplatform FreeType Bindings</description>
+    <url>https://github.com/generaloss/freetype-bindings</url>
+
+    <properties>
+        <maven.compiler.source>15</maven.compiler.source>
+        <maven.compiler.target>15</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- jpize-utils -->
+        <dependency>
+            <groupId>io.github.generaloss</groupId>
+            <artifactId>jpize-utils</artifactId>
+            <version>25.3.2-SNAPSHOT-2</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <scm>
+        <connection>scm:git:git://github.com/generaloss/freetype-bindings.git</connection>
+        <developerConnection>scm:git:ssh://github.com:generaloss/freetype-bindings.git</developerConnection>
+        <url>https://github.com/generaloss/freetype-bindings/tree/master</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>generaloss</id>
+            <name>Pavel Vladimirovich</name>
+            <email>generaloss@proton.me</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>GNU GPL-v2.0 license</name>
+            <url>https://www.gnu.org/licenses/old-licenses/gpl-2.0.html</url>
+        </license>
+    </licenses>
+
+    <build>
+        <plugins>
+            <!-- generate headers -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-h</arg>
+                        <arg>${basedir}/target/headers</arg>
+                    </compilerArgs>
+                    <source>15</source>
+                    <target>15</target>
+                </configuration>
+            </plugin>
+            <!-- attach sources -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- attach javadocs -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.8.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <additionalOptions>-Xdoclint:none</additionalOptions>
+                    <javadocExecutable>/usr/lib/jvm/java-17-openjdk/bin/javadoc</javadocExecutable>
+                </configuration>
+            </plugin>
+            <!-- sign jar with gpg key -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.3</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- deploy to maven central repository -->
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.3.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                    <tokenAuth>true</tokenAuth>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
