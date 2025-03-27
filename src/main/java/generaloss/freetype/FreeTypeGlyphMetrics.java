@@ -16,56 +16,56 @@ public class FreeTypeGlyphMetrics {
     private static native int getWidth(long metrics);
 
     public int getWidth() {
-        return getWidth(address);
+        return FreeType.FTPos_toInt(getWidth(address));
     }
 
 
     private static native int getHeight(long metrics);
 
     public int getHeight() {
-        return getHeight(address);
+        return FreeType.FTPos_toInt(getHeight(address));
     }
 
 
     private static native int getHoriBearingX(long metrics);
 
     public int getHoriBearingX() {
-        return getHoriBearingX(address);
+        return FreeType.FTPos_toInt(getHoriBearingX(address));
     }
 
 
     private static native int getHoriBearingY(long metrics);
 
     public int getHoriBearingY() {
-        return getHoriBearingY(address);
+        return FreeType.FTPos_toInt(getHoriBearingY(address));
     }
 
 
     private static native int getHoriAdvance(long metrics);
 
     public int getHoriAdvance() {
-        return getHoriAdvance(address);
+        return FreeType.FTPos_toInt(getHoriAdvance(address));
     }
 
 
     private static native int getVertBearingX(long metrics);
 
     public int getVertBearingX() {
-        return getVertBearingX(address);
+        return FreeType.FTPos_toInt(getVertBearingX(address));
     }
 
 
     private static native int getVertBearingY(long metrics);
 
     public int getVertBearingY() {
-        return getVertBearingY(address);
+        return FreeType.FTPos_toInt(getVertBearingY(address));
     }
 
 
     private static native int getVertAdvance(long metrics);
 
     public int getVertAdvance() {
-        return getVertAdvance(address);
+        return FreeType.FTPos_toInt(getVertAdvance(address));
     }
 
 }

@@ -6,11 +6,11 @@ import java.nio.ByteBuffer;
 
 public class FreeType {
 
-    protected static int encode(char a, char b, char c, char d) {
+    protected static int encodeChars(char a, char b, char c, char d) {
         return (a << 24) | (b << 16) | (c << 8) | d;
     }
 
-    public static int toInt(int value) {
+    public static int FTPos_toInt(int value) {
         return ((value + 63) & -64) >> 6;
     }
 

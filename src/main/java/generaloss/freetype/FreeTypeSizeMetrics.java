@@ -44,28 +44,28 @@ public class FreeTypeSizeMetrics {
     private static native int getAscender(long metrics);
 
     public int getAscender() {
-        return getAscender(address);
+        return FreeType.FTPos_toInt(getAscender(address));
     }
 
 
     private static native int getDescender(long metrics);
 
     public int getDescender() {
-        return getDescender(address);
+        return FreeType.FTPos_toInt(getDescender(address));
     }
 
 
     private static native int getHeight(long metrics);
 
     public int getHeight() {
-        return getHeight(address);
+        return FreeType.FTPos_toInt(getHeight(address));
     }
 
 
     private static native int getMaxAdvance(long metrics);
 
     public int getMaxAdvance() {
-        return getMaxAdvance(address);
+        return FreeType.FTPos_toInt(getMaxAdvance(address));
     }
 
 }

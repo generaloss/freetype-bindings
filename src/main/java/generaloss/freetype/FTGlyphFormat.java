@@ -16,7 +16,7 @@ public enum FTGlyphFormat {
     }
 
     FTGlyphFormat(char a, char b, char c, char d) {
-        this.value = FreeType.encode(a, b, c, d);
+        this.value = FreeType.encodeChars(a, b, c, d);
     }
 
     public static FTGlyphFormat byValue(int value) {
