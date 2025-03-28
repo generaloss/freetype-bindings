@@ -1,6 +1,6 @@
 package generaloss.freetype;
 
-public enum FTKerning {
+public enum FTKerningMode {
 
     DEFAULT,  // 0
     UNFITTED, // 1
@@ -8,11 +8,11 @@ public enum FTKerning {
 
     public final int value;
 
-    FTKerning() {
+    FTKerningMode() {
         this.value = this.ordinal();
     }
 
-    public static FTKerning byValue(int value) {
+    public static FTKerningMode byValue(int value) {
         return values()[value];
     }
 

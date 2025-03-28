@@ -108,15 +108,15 @@ public class FreeTypeFace {
 
     private static native boolean loadGlyph(long face, int glyphIndex, int loadFlags);
 
-    public boolean loadGlyph(int glyphIndex, int loadFlags) {
-        return loadGlyph(address, glyphIndex, loadFlags);
+    public boolean loadGlyph(int glyphIndex, FTLoadFlags loadFlags) {
+        return loadGlyph(address, glyphIndex, loadFlags.getBits());
     }
 
 
     private static native boolean loadChar(long face, int charCode, int loadFlags);
 
-    public boolean loadChar(int charCode, int loadFlags) {
-        return loadChar(address, charCode, loadFlags);
+    public boolean loadChar(int charCode, FTLoadFlags loadFlags) {
+        return loadChar(address, charCode, loadFlags.getBits());
     }
 
 
@@ -145,8 +145,8 @@ public class FreeTypeFace {
 
     private static native int getKerning(long face, int leftGlyph, int rightGlyph, int kernMode);
 
-    public int getKerning(int leftGlyph, int rightGlyph, int kernMode) {
-        return getKerning(address, leftGlyph, rightGlyph, kernMode);
+    public int getKerning(int leftGlyph, int rightGlyph, FTKerningMode kernMode) {
+        return getKerning(address, leftGlyph, rightGlyph, kernMode.value);
     }
 
 
