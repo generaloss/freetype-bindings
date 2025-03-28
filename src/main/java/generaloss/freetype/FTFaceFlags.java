@@ -6,16 +6,22 @@ public class FTFaceFlags extends BitMask {
         super(bits);
     }
 
+    public FTFaceFlags() {
+        super(0);
+    }
+
     public boolean has(FTFaceFlag flag) {
         return super.has(flag.value);
     }
 
-    public boolean set(FTFaceFlag flag) {
-        return super.has(flag.value);
+    public FTFaceFlags set(FTFaceFlag flag) {
+        super.set(flag.value);
+        return this;
     }
 
-    public boolean clear(FTFaceFlag flag) {
-        return super.has(flag.value);
+    public FTFaceFlags clear(FTFaceFlag flag) {
+        super.clear(flag.value);
+        return this;
     }
 
 }

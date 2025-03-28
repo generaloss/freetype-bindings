@@ -6,16 +6,22 @@ public class FTStyleFlags extends BitMask {
         super(bits);
     }
 
+    public FTStyleFlags() {
+        super(0);
+    }
+
     public boolean has(FTStyleFlag flag) {
         return super.has(flag.value);
     }
 
-    public boolean set(FTStyleFlag flag) {
-        return super.has(flag.value);
+    public FTStyleFlags set(FTStyleFlag flag) {
+        super.set(flag.value);
+        return this;
     }
 
-    public boolean clear(FTStyleFlag flag) {
-        return super.has(flag.value);
+    public FTStyleFlags clear(FTStyleFlag flag) {
+        super.clear(flag.value);
+        return this;
     }
 
 }

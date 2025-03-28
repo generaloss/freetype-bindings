@@ -6,16 +6,22 @@ public class FTLoadFlags extends BitMask {
         super(bits);
     }
 
+    public FTLoadFlags() {
+        super(0);
+    }
+
     public boolean has(FTLoad flag) {
         return super.has(flag.value);
     }
 
-    public boolean set(FTLoad flag) {
-        return super.has(flag.value);
+    public FTLoadFlags set(FTLoad flag) {
+       super.set(flag.value);
+        return this;
     }
 
-    public boolean clear(FTLoad flag) {
-        return super.has(flag.value);
+    public FTLoadFlags clear(FTLoad flag) {
+        super.clear(flag.value);
+        return this;
     }
 
 }
