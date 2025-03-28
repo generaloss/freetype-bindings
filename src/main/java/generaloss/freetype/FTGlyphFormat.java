@@ -2,12 +2,12 @@ package generaloss.freetype;
 
 public enum FTGlyphFormat {
 
-    FT_GLYPH_FORMAT_NONE      (0),
-    FT_GLYPH_FORMAT_COMPOSITE ('c', 'o', 'm', 'p'),
-    FT_GLYPH_FORMAT_BITMAP    ('b', 'i', 't', 's'),
-    FT_GLYPH_FORMAT_OUTLINE   ('o', 'u', 't', 'l'),
-    FT_GLYPH_FORMAT_PLOTTER   ('p', 'l', 'o', 't'),
-    FT_GLYPH_FORMAT_SVG       ('S', 'V', 'G', ' ');
+    NONE      (0),
+    COMPOSITE ('c', 'o', 'm', 'p'),
+    BITMAP    ('b', 'i', 't', 's'),
+    OUTLINE   ('o', 'u', 't', 'l'),
+    PLOTTER   ('p', 'l', 'o', 't'),
+    SVG       ('S', 'V', 'G', ' ');
 
     public final int value;
 
