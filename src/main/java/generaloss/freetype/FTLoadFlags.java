@@ -10,17 +10,33 @@ public class FTLoadFlags extends BitMask {
         super(0);
     }
 
-    public boolean has(FTLoad flag) {
+
+    public boolean has(FTLoadFlag flag) {
         return super.has(flag.value);
     }
 
-    public FTLoadFlags set(FTLoad flag) {
+    public FTLoadFlags set(FTLoadFlag flag) {
        super.set(flag.value);
         return this;
     }
 
-    public FTLoadFlags clear(FTLoad flag) {
+    public FTLoadFlags clear(FTLoadFlag flag) {
         super.clear(flag.value);
+        return this;
+    }
+
+
+    public boolean has(FTLoadTarget target) {
+        return super.has(target.value);
+    }
+
+    public FTLoadFlags set(FTLoadTarget target) {
+        super.set(target.value);
+        return this;
+    }
+
+    public FTLoadFlags clear(FTLoadTarget target) {
+        super.clear(target.value);
         return this;
     }
 
