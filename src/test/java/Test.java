@@ -10,21 +10,21 @@ public class Test {
     }
 
     private static void test1() {
-        final FreeType library = FreeType.init();
+        final FTLibrary library = FTLibrary.init();
 
-        final FreeTypeFace face = library.newFace(Resource.internal("/droidsans.ttf"), 0);
+        final FTFace face = library.newMemoryFace(Resource.internal("/droidsans.ttf"), 0);
         face.setPixelSizes(0, 15);
-        final FreeTypeSizeMetrics faceMetrics = face.getSize().getMetrics();
+        final FTSizeMetrics faceMetrics = face.getSize().getMetrics();
         System.out.println(faceMetrics.getAscender() + ", " + faceMetrics.getDescender() + ", " + faceMetrics.getHeight());
 
         for(int i = 0; i < CHARS.length(); i++) {
-            if(!face.loadGlyph(face.getCharIndex(CHARS.charAt(i)), 0))
+            if(!face.loadGlyph(face.getCharIndex(CHARS.charAt(i))))
                 continue;
             if(!face.getGlyph().renderGlyph(FTRenderMode.NORMAL))
                 continue;
 
-            final FreeTypeBitmap bitmap = face.getGlyph().getBitmap();
-            final FreeTypeGlyphMetrics glyphMetrics = face.getGlyph().getMetrics();
+            final FTBitmap bitmap = face.getGlyph().getBitmap();
+            final FTGlyphMetrics glyphMetrics = face.getGlyph().getMetrics();
 
             System.out.println(glyphMetrics.getHoriBearingX() + ", " + glyphMetrics.getHoriBearingY());
             System.out.println(glyphMetrics.getWidth() + ", " + glyphMetrics.getHeight() + ", " + glyphMetrics.getHoriAdvance());
