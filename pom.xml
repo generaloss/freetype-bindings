@@ -6,7 +6,7 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>freetype-bindings</artifactId>
-    <version>24.3.1-SNAPSHOT-11</version>
+    <version>24.3.1-SNAPSHOT-13</version>
     <name>freetype-bindings</name>
 
     <description>Java Crossplatform FreeType Bindings</description>

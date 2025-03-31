@@ -5,7 +5,7 @@
 #include FT_OUTLINE_H
 #include FT_STROKER_H
 
-JNIEXPORT jlong JNICALL Java_generaloss_freetype_FTGlyph_strokeBorder (
+JNIEXPORT jlong JNICALL Java_generaloss_freetype_glyph_FTGlyph_strokeBorder (
         JNIEnv *, jclass, jlong glyphPtr, jlong strokerPtr, jboolean inside) {
 
     FT_Glyph glyph = reinterpret_cast<FT_Glyph>(glyphPtr);
@@ -23,25 +23,25 @@ JNIEXPORT jlong JNICALL Java_generaloss_freetype_FTGlyph_strokeBorder (
     return reinterpret_cast<jlong>(newGlyph);
 }
 
-JNIEXPORT jlong JNICALL Java_generaloss_freetype_FTGlyph_toBitmap (JNIEnv *, jclass, jlong glyphPtr, jint mode) {
+JNIEXPORT jlong JNICALL Java_generaloss_freetype_glyph_FTGlyph_toBitmap (JNIEnv *, jclass, jlong glyphPtr, jint mode) {
     FT_Glyph glyph = reinterpret_cast<FT_Glyph>(glyphPtr);
     if(FT_Glyph_To_Bitmap(&glyph, static_cast<FT_Render_Mode>(mode), nullptr, 1) == 0)
         return reinterpret_cast<jlong>(glyph);
     return 0;
 }
 
-JNIEXPORT jlong JNICALL Java_generaloss_freetype_FTGlyph_getBitmap (JNIEnv *, jclass, jlong glyphPtr) {
+JNIEXPORT jlong JNICALL Java_generaloss_freetype_glyph_FTGlyph_getBitmap (JNIEnv *, jclass, jlong glyphPtr) {
     return reinterpret_cast<jlong>(&reinterpret_cast<FT_BitmapGlyph>(glyphPtr)->bitmap);
 }
 
-JNIEXPORT jint JNICALL Java_generaloss_freetype_FTGlyph_getLeft (JNIEnv *, jclass, jlong glyphPtr) {
+JNIEXPORT jint JNICALL Java_generaloss_freetype_glyph_FTGlyph_getLeft (JNIEnv *, jclass, jlong glyphPtr) {
     return reinterpret_cast<FT_BitmapGlyph>(glyphPtr)->left;
 }
 
-JNIEXPORT jint JNICALL Java_generaloss_freetype_FTGlyph_getTop (JNIEnv *, jclass, jlong glyphPtr) {
+JNIEXPORT jint JNICALL Java_generaloss_freetype_glyph_FTGlyph_getTop (JNIEnv *, jclass, jlong glyphPtr) {
     return reinterpret_cast<FT_BitmapGlyph>(glyphPtr)->top;
 }
 
-JNIEXPORT void JNICALL Java_generaloss_freetype_FTGlyph_done (JNIEnv *, jclass, jlong glyphPtr) {
+JNIEXPORT void JNICALL Java_generaloss_freetype_glyph_FTGlyph_done (JNIEnv *, jclass, jlong glyphPtr) {
     FT_Done_Glyph(reinterpret_cast<FT_Glyph>(glyphPtr));
 }
