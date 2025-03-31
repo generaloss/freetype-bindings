@@ -1,3 +1,5 @@
+package generaloss.freetype.charmap;
+
 import generaloss.freetype.FTLibrary;
 
 public enum FTEncoding {
