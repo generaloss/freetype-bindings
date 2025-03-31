@@ -1,10 +1,10 @@
-package generaloss.freetype;
+package generaloss.freetype.stroker;
 
 public class FTStroker {
 
     private final long address;
 
-    FTStroker(long address) {
+    public FTStroker(long address) {
         this.address = address;
     }
 

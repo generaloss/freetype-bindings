@@ -1,12 +1,14 @@
 package generaloss.freetype;
 
+import generaloss.freetype.face.FTFace;
+import generaloss.freetype.stroker.FTStroker;
 import jpize.util.NativeLib;
 import jpize.util.res.Resource;
 import java.nio.ByteBuffer;
 
 public class FTLibrary {
 
-    protected static int encodeChars(char a, char b, char c, char d) {
+    public static int encodeChars(char a, char b, char c, char d) {
         return (a << 24) | (b << 16) | (c << 8) | d;
     }
 

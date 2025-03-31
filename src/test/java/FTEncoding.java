@@ -1,4 +1,4 @@
-package generaloss.freetype;
+import generaloss.freetype.FTLibrary;
 
 public enum FTEncoding {
 
@@ -18,9 +18,9 @@ public enum FTEncoding {
     MS_SJIS        (SJIS.value),
 
     /** Corresponds to encoding systems mainly for Simplified Chinese as used in People's Republic of China (PRC). The encoding layout is based on GB 2312 and its supersets GBK and GB 18030. */
-    PRC         ('g', 'b', ' ', ' '),
-    GB2312      (PRC.value),
-    MS_GB2312   (PRC.value),
+    PRC            ('g', 'b', ' ', ' '),
+    GB2312         (PRC.value),
+    MS_GB2312      (PRC.value),
 
     /** Corresponds to an encoding system for Traditional Chinese as used in Taiwan and Hong Kong. */
     BIG5           ('b', 'i', 'g', '5'),
@@ -28,11 +28,11 @@ public enum FTEncoding {
 
     /** Corresponds to the Korean encoding system known as Extended Wansung (MS Windows code page 949). For more information see ‘<a href="https://www.unicode.org/Public/MAPPINGS/VENDORS/MICSFT/WindowsBestFit/bestfit949.txt">unicode.org</a>’. */
     WANSUNG        ('w', 'a', 'n', 's'),
-    MS_WANSUNG (WANSUNG.value),
+    MS_WANSUNG     (WANSUNG.value),
 
     /** The Korean standard character set (KS C 5601-1992), which corresponds to MS Windows code page 1361. This character set includes all possible Hangul character combinations. */
     JOHAB          ('j', 'o', 'h', 'a'),
-    MS_JOHAB   (JOHAB.value),
+    MS_JOHAB       (JOHAB.value),
 
     /** Adobe Standard encoding, as found in Type 1, CFF, and OpenType/CFF fonts. It is limited to 256 character codes. */
     ADOBE_STANDARD ('A', 'D', 'O', 'B'),

@@ -1,11 +1,15 @@
-package generaloss.freetype;
+package generaloss.freetype.glyph;
+
+import generaloss.freetype.bitmap.FTBitmap;
+import generaloss.freetype.FTLibrary;
+import generaloss.freetype.stroker.FTStroker;
 
 public class FTGlyph {
 
     private long address;
     private boolean rendered;
 
-    FTGlyph(long address) {
+    public FTGlyph(long address) {
         this.address = address;
     }
 

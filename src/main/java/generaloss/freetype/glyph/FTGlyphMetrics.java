@@ -1,10 +1,12 @@
-package generaloss.freetype;
+package generaloss.freetype.glyph;
+
+import generaloss.freetype.FTLibrary;
 
 public class FTGlyphMetrics { // done
 
     private final long address;
 
-    FTGlyphMetrics(long address) {
+    public FTGlyphMetrics(long address) {
         this.address = address;
     }
 

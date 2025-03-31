@@ -1,4 +1,4 @@
-package generaloss.freetype;
+package generaloss.freetype.face;
 
 public enum FTKerningMode {
 

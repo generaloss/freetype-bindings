@@ -1,4 +1,4 @@
-package generaloss.freetype.flags;
+package generaloss.freetype.face;
 
 public enum FTFaceFlag {
 

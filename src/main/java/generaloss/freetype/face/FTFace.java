@@ -1,8 +1,7 @@
-package generaloss.freetype;
+package generaloss.freetype.face;
 
-import generaloss.freetype.flags.FTFaceFlags;
-import generaloss.freetype.flags.FTLoadFlags;
-import generaloss.freetype.flags.FTStyleFlags;
+import generaloss.freetype.*;
+import generaloss.freetype.glyph.FTGlyphSlot;
 
 public class FTFace {
 

@@ -1,10 +1,10 @@
-package generaloss.freetype;
+package generaloss.freetype.face;
 
 public class FTSize {
 
     private final long address;
 
-    FTSize(long address) {
+    public FTSize(long address) {
         this.address = address;
     }
 

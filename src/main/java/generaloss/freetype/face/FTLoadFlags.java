@@ -1,6 +1,5 @@
-package generaloss.freetype.flags;
+package generaloss.freetype.face;
 
-import generaloss.freetype.FTLoadTarget;
 import jpize.util.BitMask;
 
 public class FTLoadFlags extends BitMask {

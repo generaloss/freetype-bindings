@@ -1,4 +1,6 @@
-package generaloss.freetype;
+package generaloss.freetype.glyph;
+
+import generaloss.freetype.FTLibrary;
 
 public enum FTGlyphFormat {
 

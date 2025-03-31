@@ -1,10 +1,13 @@
-package generaloss.freetype;
+package generaloss.freetype.glyph;
+
+import generaloss.freetype.bitmap.FTBitmap;
+import generaloss.freetype.FTLibrary;
 
 public class FTGlyphSlot {
 
     private final long address;
 
-    FTGlyphSlot(long address) {
+    public FTGlyphSlot(long address) {
         this.address = address;
     }
 

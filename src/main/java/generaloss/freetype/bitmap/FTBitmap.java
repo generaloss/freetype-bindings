@@ -1,4 +1,4 @@
-package generaloss.freetype;
+package generaloss.freetype.bitmap;
 
 import java.nio.ByteBuffer;
 
@@ -6,7 +6,7 @@ public class FTBitmap {
 
     private final long address;
 
-    protected FTBitmap(long address) {
+    public FTBitmap(long address) {
         this.address = address;
     }
 
