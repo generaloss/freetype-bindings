@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(freetype_bindings)
+project(freetype_jni)
 
 # platform variable
 set(TARGET_OS "windows")
@@ -23,12 +23,12 @@ endif()
 find_package(Freetype REQUIRED)
 # add sources
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
-add_library(freetype_bindings SHARED ${SOURCE_FILES})
+add_library(freetype_jni SHARED ${SOURCE_FILES})
 include_directories("include")
 
 # include headers
-target_include_directories(freetype_bindings PRIVATE ${FREETYPE_INCLUDE_DIRS})
-target_link_libraries(freetype_bindings PRIVATE ${FREETYPE_LIBRARIES})
+target_include_directories(freetype_jni PRIVATE ${FREETYPE_INCLUDE_DIRS})
+target_link_libraries(freetype_jni PRIVATE ${FREETYPE_LIBRARIES})
 
 # platform-specific options
 if(TARGET_OS STREQUAL "linux")
@@ -45,5 +45,5 @@ elseif(TARGET_OS STREQUAL "android")
     set(CMAKE_TOOLCHAIN_FILE "${ANDROID_NDK}/build/cmake/android.toolchain.cmake")
     set(ANDROID_ABI "arm64-v8a")
     set(ANDROID_NATIVE_API_LEVEL 34)
-    target_link_libraries(freetype_bindings PRIVATE android log)
+    target_link_libraries(freetype_jni PRIVATE android log)
 endif()

@@ -38,7 +38,7 @@ public class FTLibrary {
     private static void loadLibrary() {
         final String os = System.getProperty("os.name").toLowerCase();
         final String architecture = System.getProperty("os.arch").toLowerCase();
-        final String filename = NativeLib.getFilename("freetype_bindings");
+        final String filename = NativeLib.getFilename("freetype_jni");
         NativeLib.load(Resource.internal("/lib/freetype/" + os + "-" + architecture + "/" + filename));
     }
 

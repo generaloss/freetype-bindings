@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.generaloss</groupId>
-    <artifactId>freetype-bindings</artifactId>
+    <artifactId>freetype-jni</artifactId>
     <version>24.3.1-SNAPSHOT-13</version>
-    <name>freetype-bindings</name>
+    <name>freetype-jni</name>
 
-    <description>Java Crossplatform FreeType Bindings</description>
-    <url>https://github.com/generaloss/freetype-bindings</url>
+    <description>FreeType Library Java Native Interface</description>
+    <url>https://github.com/generaloss/freetype-jni</url>
 
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
@@ -23,15 +23,15 @@
         <dependency>
             <groupId>io.github.generaloss</groupId>
             <artifactId>jpize-utils</artifactId>
-            <version>25.3.2-SNAPSHOT-5</version>
+            <version>25.3.2-SNAPSHOT-6</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
 
     <scm>
-        <connection>scm:git:git://github.com/generaloss/freetype-bindings.git</connection>
-        <developerConnection>scm:git:ssh://github.com:generaloss/freetype-bindings.git</developerConnection>
-        <url>https://github.com/generaloss/freetype-bindings/tree/master</url>
+        <connection>scm:git:git://github.com/generaloss/freetype-jni.git</connection>
+        <developerConnection>scm:git:ssh://github.com:generaloss/freetype-jni.git</developerConnection>
+        <url>https://github.com/generaloss/freetype-jni/tree/master</url>
     </scm>
 
     <developers>
