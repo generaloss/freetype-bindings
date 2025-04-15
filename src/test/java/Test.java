@@ -8,16 +8,22 @@ import jpize.util.res.Resource;
 
 public class Test {
 
+    public static void main(String[] args) {
+        test2();
+    }
+
     private static final String CHARS = "\0ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890\"!`?'.,;:()[]{}<>|/@\\^$-%+=#_&~*�?�?�?�?�? ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿À�?ÂÃÄÅÆÇÈÉÊËÌ�?Î�?�?ÑÒÓÔÕÖ×ØÙÚÛÜ�?Þßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ";
 
-    public static void main(String[] args) {
-        test1();
+    private static void test2() {
+        final FTLibrary library = FTLibrary.init();
+        // ...
+        library.done();
     }
 
     private static void test1() {
         final FTLibrary library = FTLibrary.init();
 
-        final FTFace face = library.newMemoryFace(Resource.internal("/droidsans.ttf"), 0);
+        final FTFace face = library.newMemoryFace(Resource.internal("/droidsans.ttf").readBytes(), 0);
         face.setPixelSizes(0, 15);
         final FTSizeMetrics faceMetrics = face.getSize().getMetrics();
         System.out.println(faceMetrics.getAscender() + ", " + faceMetrics.getDescender() + ", " + faceMetrics.getHeight());

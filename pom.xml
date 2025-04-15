@@ -6,7 +6,7 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>freetype-jni</artifactId>
-    <version>24.4.1-SNAPSHOT-1</version>
+    <version>25.4.1</version>
     <name>freetype-jni</name>
 
     <description>FreeType Library Java Native Interface</description>
@@ -23,8 +23,8 @@
         <dependency>
             <groupId>io.github.generaloss</groupId>
             <artifactId>jpize-utils</artifactId>
-            <version>25.3.2-SNAPSHOT-6</version>
-            <scope>provided</scope>
+            <version>25.3.1</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

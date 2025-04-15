@@ -2,7 +2,6 @@ package generaloss.freetype;
 
 import generaloss.freetype.face.FTFace;
 import generaloss.freetype.stroker.FTStroker;
-import jpize.util.res.Resource;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -129,10 +128,6 @@ public class FTLibrary {
         buffer.put(data);
         buffer.position(0);
         return newMemoryFace(buffer, faceIndex);
-    }
-
-    public FTFace newMemoryFace(Resource res, int faceIndex) {
-        return newMemoryFace(res.readByteBuffer(), faceIndex);
     }
 
 

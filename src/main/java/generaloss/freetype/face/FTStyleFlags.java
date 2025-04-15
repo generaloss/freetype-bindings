@@ -1,6 +1,6 @@
 package generaloss.freetype.face;
 
-import jpize.util.BitMask;
+import generaloss.freetype.BitMask;
 
 public class FTStyleFlags extends BitMask {
 

@@ -1,9 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/natives/freetype-jni-natives-android" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/natives/freetype-jni-natives-linux/pom.xml" />
+        <option value="$PROJECT_DIR$/natives/freetype-jni-natives-windows/pom.xml" />
       </list>
     </option>
   </component>
