@@ -1,49 +1,49 @@
 cmake_minimum_required(VERSION 3.10)
 project(freetype_jni)
 
-# platform variable
-set(TARGET_OS "windows")
-
 # jdk headers
-if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    set(JAVA_HOME "/usr/lib/jvm/java-17-openjdk")
-    include_directories("${JAVA_HOME}/include/linux")
-    include_directories("${JAVA_HOME}/include")
+set(JAVA_HOME "/usr/lib/jvm/java-8-openjdk") # for windows: set(JAVA_HOME "C:/Program Files/Java/jdk-8")
+include_directories("${JAVA_HOME}/include/linux" "${JAVA_HOME}/include") # for windows: include_directories("${JAVA_HOME}/include/win32" "${JAVA_HOME}/include")
 
-elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
-    set(JAVA_HOME "your windows java home path")
-    include_directories("${JAVA_HOME}\\include\\win32")
-    include_directories("${JAVA_HOME}\\include")
-
-elseif(CMAKE_SYSTEM_NAME STREQUAL "Android")
-    # android-specific include paths can be added here if needed
-endif()
-
-# find freetype lib
-find_package(Freetype REQUIRED)
-# add sources
-file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
-add_library(freetype_jni SHARED ${SOURCE_FILES})
+# sources
+file(GLOB_RECURSE SOURCE_FILES src/*.*)
 include_directories("include")
 
-# include headers
-target_include_directories(freetype_jni PRIVATE ${FREETYPE_INCLUDE_DIRS})
-target_link_libraries(freetype_jni PRIVATE ${FREETYPE_LIBRARIES})
+# library
+add_library(freetype_jni SHARED ${SOURCE_FILES})
 
-# platform-specific options
-if(TARGET_OS STREQUAL "linux")
-    message(STATUS "Compiling for Linux")
+# freetype
+target_include_directories(freetype_jni PRIVATE ${CMAKE_SOURCE_DIR}/freetype/include)
 
-elseif(TARGET_OS STREQUAL "windows")
-    message(STATUS "Compiling for Windows")
-    # ensure cmake generates a dll
+set(FREETYPE_LIB "${CMAKE_SOURCE_DIR}/freetype/lib/${TARGET_PLATFORM}/${TARGET_ARCH}/libfreetype.a")
+if(NOT EXISTS "${FREETYPE_LIB}")
+    message(FATAL_ERROR "libfreetype.a not found for current platform/arch: ${FREETYPE_LIB}")
+endif()
+
+add_library(freetype STATIC IMPORTED GLOBAL)
+set_target_properties(freetype PROPERTIES IMPORTED_LOCATION "${FREETYPE_LIB}")
+
+target_link_libraries(freetype_jni PRIVATE freetype)
+
+# library
+if(TARGET_PLATFORM STREQUAL "android")
+    message(STATUS "Configuring for Android")
+
+    target_link_libraries(freetype_jni PRIVATE z android log)
+    set_target_properties(freetype_jni PROPERTIES SUFFIX ".so")
+
+elseif(TARGET_PLATFORM STREQUAL "windows")
+    message(STATUS "Configuring for Windows")
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    set_target_properties(freetype_jni PROPERTIES
+        SUFFIX ".dll"
+        PREFIX ""
+        IMPORT_PREFIX ""
+    )
+    target_link_options(freetype_jni PRIVATE -static -static-libgcc -static-libstdc++)
 
-elseif(TARGET_OS STREQUAL "android")
-    message(STATUS "Compiling for Android")
-
-    set(CMAKE_TOOLCHAIN_FILE "${ANDROID_NDK}/build/cmake/android.toolchain.cmake")
-    set(ANDROID_ABI "arm64-v8a")
-    set(ANDROID_NATIVE_API_LEVEL 34)
-    target_link_libraries(freetype_jni PRIVATE android log)
+else()
+    message(STATUS "Configuring for Linux")
+    target_compile_options(freetype_jni PRIVATE -fPIC)
+    set_target_properties(freetype_jni PROPERTIES SUFFIX ".so")
 endif()

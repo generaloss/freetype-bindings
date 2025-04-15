@@ -1,0 +1,1 @@
+rootProject.name = "freetype-jni-natives-android"

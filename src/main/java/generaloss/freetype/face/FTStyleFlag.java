@@ -14,4 +14,13 @@ public enum FTStyleFlag {
         this.value = (1 << this.ordinal());
     }
 
+
+    public boolean isItalic() {
+        return this == ITALIC;
+    }
+
+    public boolean isBold() {
+        return this == BOLD;
+    }
+
 }

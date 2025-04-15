@@ -6,15 +6,15 @@
 
     <groupId>io.github.generaloss</groupId>
     <artifactId>freetype-jni</artifactId>
-    <version>24.3.1-SNAPSHOT-13</version>
+    <version>24.4.1-SNAPSHOT-1</version>
     <name>freetype-jni</name>
 
     <description>FreeType Library Java Native Interface</description>
     <url>https://github.com/generaloss/freetype-jni</url>
 
     <properties>
-        <maven.compiler.source>15</maven.compiler.source>
-        <maven.compiler.target>15</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -60,8 +60,8 @@
                         <arg>-h</arg>
                         <arg>${basedir}/target/headers</arg>
                     </compilerArgs>
-                    <source>15</source>
-                    <target>15</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
             </plugin>
             <!-- attach sources -->
